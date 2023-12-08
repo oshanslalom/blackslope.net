@@ -4,6 +4,13 @@ namespace BlackSlope.Repositories.FakeApi
 {
     public interface IFakeApiRepository
     {
-        Task<dynamic> GetExponentialBackoff();
+        Task<dynamic> GetExponentialBackoff();      
     }
 }
+
+
+
+
+
+
+

@@ -53,8 +53,8 @@ jobs:
       - name: Test
         run: dotnet test src --configuration Release --no-restore --verbosity normal
 
-      - name: Format
-        run: dotnet format src --check --verbosity normal
+      - name: Lint check
+        uses: super-linter/super-linter@v5
 
       - name: Login to Azure Container Registry
         uses: azure/docker-login@v1
