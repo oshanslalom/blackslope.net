@@ -39,6 +39,22 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '6.0' # Adjust the version as needed
+
+      - name: Build
+        run: dotnet build src --configuration Release
+
+      - name: Test
+        run: dotnet test src --configuration Release --no-restore --verbosity normal
+
+      - name: Format
+        run: dotnet format src --check --verbosity normal
 
       - name: Login to Azure Container Registry
         uses: azure/docker-login@v1
