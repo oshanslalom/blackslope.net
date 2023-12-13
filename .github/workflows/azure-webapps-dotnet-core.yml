@@ -62,7 +62,7 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t ${{ env.CONTAINER_REGISTRY_URL }}/${{env.IMAGE_NAME}}:latest -f src/Dockerfile .
+          docker build -t ${{ env.CONTAINER_REGISTRY_URL }}/${{env.IMAGE_NAME}}:latest -f src\Dockerfile .
           docker push ${{ env.CONTAINER_REGISTRY_URL }}/${{env.IMAGE_NAME}}:latest
 
   deploy-to-dev:
@@ -74,10 +74,10 @@ jobs:
     steps:
     - name: Deploy to Azure App Service
       run: |
-          branch_name=$(echo $GITHUB_REF | sed 's#refs/heads/##')
-          if [[ branch_name == "main" ]]; then
-            echo "Its working"
-          fi
+          $branch_name = $env:GITHUB_REF -replace 'refs/heads/', ''
+          if ($branch_name -eq "main") {
+              echo "It's working"
+          }
       
   deploy-to-staging:
     runs-on: ubuntu-latest
