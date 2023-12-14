@@ -47,6 +47,11 @@ jobs:
         with:
           dotnet-version: '6.0' # Adjust the version as needed  
 
+      - name: Set up PowerShell
+        uses: actions/setup-powershell@v2
+        with:
+          pwsh-version: '7.0'
+
       - name: Build
         run: dotnet build src --configuration Release
 
