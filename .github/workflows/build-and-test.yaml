@@ -4,10 +4,11 @@ on:
   push:
     branches:
       - '*'
+  workflow_dispatch:
 
 jobs:
   build-test-format:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - name: Checkout code
@@ -28,5 +29,5 @@ jobs:
       run: dotnet format src --check --verbosity normal
     
     - name: Build docker image
-        run: |
+        run:|
           docker build src -t test/test:latest 
