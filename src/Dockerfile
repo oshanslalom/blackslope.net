@@ -1,6 +1,6 @@
 # Build the application
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-COPY src/ .
+COPY . .
 WORKDIR /BlackSlope.Api
 RUN dotnet restore
 RUN dotnet publish --no-restore -c Release -o /app
